@@ -1,32 +1,22 @@
-# Introducing h264-mp4-encoder
-Encode directly to H264 and ouput as an MP4 in node or on the web with WebAssembly! Works with the HTML5 Canvas :)
+# Introducing h264-mp4-encoder.es
+Encode directly to H264 and ouput as an MP4 in Deno, Node.js or on the web with WebAssembly! Works with the HTML5 Canvas :)
 
-[See The Simple Demo](https://trevorsundberg.github.io/h264-mp4-encoder/) or checkout the animation site it was designed for: [Gifygram](https://gifygram.com)!
-
-[![Build Status](https://travis-ci.org/TrevorSundberg/h264-mp4-encoder.svg?branch=master)](https://travis-ci.org/TrevorSundberg/h264-mp4-encoder)
-```
-npm install h264-mp4-encoder
-```
+[See The Simple Demo](https://taisukef.github.io/h264-mp4-encoder/test.html) or checkout the animation site it was designed for: [Gifygram](https://gifygram.com)!
 
 # Example
-Web:
-```html
-<script src="https://unpkg.com/h264-mp4-encoder/embuild/dist/h264-mp4-encoder.web.js"></script>
-```
-JavaScript:
+
+JavaScript Import:
 ```js
-const HME = require("h264-mp4-encoder");
+import { HME } from "https://taisukef.github.io/h264-mp4-encoder.es/h264-mp4-encoder.es.js";
 ```
-TypeScript:
+
+JavaScript Dynamic Import:
 ```ts
-import * as HME from "h264-mp4-encoder";
-```
-Dynamic Import / Webpack:
-```ts
-const HME = await import("h264-mp4-encoder");
+const HME = await import("https://taisukef.github.io/h264-mp4-encoder.es/h264-mp4-encoder.es.js");
 // To only import the type in TypeScript:
 import("h264-mp4-encoder").H264MP4Encoder;
 ```
+
 Example:
 ```js
 HME.createH264MP4Encoder().then(encoder => {
@@ -48,14 +38,6 @@ HME.createH264MP4Encoder().then(encoder => {
 You can also use `await`:
 ```js
 const encoder = await HME.createH264MP4Encoder();
-```
-
-# Use with Webpack
-When using this library with Webpack to package onto a browser environment it will report an error because it cannot resolve "fs" which is used by Emscripten's node implementation. To fix this add this to your `webpack.config.js`:
-```json
-  "node": {
-    "fs": "empty"
-  },
 ```
 
 # API
@@ -160,6 +142,8 @@ interface H264MP4Encoder {
 ```
 
 # How does it work?
+- forked [h264-mp4-encoder](https://github.com/TrevorSundberg/h264-mp4-encoder)
+
 This library brings together the public domain [minih264](https://github.com/lieff/minih264) H264 encoder, as well as the MPL 1.1 licenced [libmp4v2](https://github.com/sergiomb2/libmp4v2) to write the H264 NAL unit data into an MP4 file. Both of these are compiled in Emscripten within a Docker image and Webpacked to create easily importable modules. This repo uses submodules that are forks of those two libraries with changes for Emscripten (and to comply with the MPL 1.1 license).
 
 # Where is the WebAssembly?

@@ -6,11 +6,11 @@
 </head>
 
 <body>
-  <script src="./embuild/dist/h264-mp4-encoder.web.js"></script>
-  <!--<script src="https://unpkg.com/h264-mp4-encoder/embuild/dist/h264-mp4-encoder.web.js"></script>-->
   <canvas width="800" height="600" style="border:1px solid black;"></canvas><br>
   <a href="https://github.com/TrevorSundberg/h264-mp4-encoder/blob/master/test.html">See The Source</a>
-  <script>
+  <script type=module>
+    import { HME } from "./h264-mp4-encoder.es.js";
+
     const canvas = document.getElementsByTagName("canvas")[0];
     const ctx = canvas.getContext("2d");
     const drawFrame = (interpolant) => {
@@ -26,7 +26,8 @@
       anchor.click();
     };
 
-    HME.createH264MP4Encoder().then(async encoder => {
+    onload = async () => {
+      const encoder = await HME.createH264MP4Encoder();
       encoder.width = canvas.width;
       encoder.height = canvas.height;
       encoder.initialize();
@@ -42,7 +43,7 @@
       const uint8Array = encoder.FS.readFile(encoder.outputFilename);
       download(URL.createObjectURL(new Blob([uint8Array], { type: "video/mp4" })))
       encoder.delete();
-    })
+    };
   </script>
   <script>
   </script>
