@@ -12,9 +12,7 @@ import { HME } from "https://taisukef.github.io/h264-mp4-encoder.es/h264-mp4-enc
 
 JavaScript Dynamic Import:
 ```ts
-const HME = await import("https://taisukef.github.io/h264-mp4-encoder.es/h264-mp4-encoder.es.js");
-// To only import the type in TypeScript:
-import("h264-mp4-encoder").H264MP4Encoder;
+const HME = (await import("https://taisukef.github.io/h264-mp4-encoder.es/h264-mp4-encoder.es.js")).HME;
 ```
 
 Example:
