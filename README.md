@@ -1,7 +1,7 @@
 # Introducing h264-mp4-encoder.es
 Encode directly to H264 and ouput as an MP4 in Deno, Node.js or on the web with WebAssembly! Works with the HTML5 Canvas :)
 
-[See The Simple Demo](https://taisukef.github.io/h264-mp4-encoder/test.html) or checkout the animation site it was designed for: [Gifygram](https://gifygram.com)!
+[See The Simple Demo](https://taisukef.github.io/h264-mp4-encoder.es/test.html) or checkout the animation site it was designed for: [Gifygram](https://gifygram.com)!
 
 # Example
 
